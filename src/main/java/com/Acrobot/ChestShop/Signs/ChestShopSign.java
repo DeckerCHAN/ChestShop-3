@@ -3,8 +3,8 @@ package com.Acrobot.ChestShop.Signs;
 import com.Acrobot.Breeze.Utils.BlockUtil;
 import com.Acrobot.ChestShop.Configuration.Properties;
 import com.Acrobot.ChestShop.Containers.AdminInventory;
+import com.Acrobot.ChestShop.UUIDs.NameManager;
 import com.Acrobot.ChestShop.Utils.uBlock;
-import com.Acrobot.ChestShop.Utils.uName;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
 import org.bukkit.block.DoubleChest;
@@ -28,7 +28,7 @@ public class ChestShopSign {
             Pattern.compile("^?[\\w -.]*$"),
             Pattern.compile("^[1-9][0-9]*$"),
             Pattern.compile("(?i)^[\\d.bs(free) :]+$"),
-            Pattern.compile("^[\\w #:-]+$")
+            Pattern.compile("^[\\w? #:-]+$")
     };
 
     public static boolean isAdminShop(Inventory ownerInventory) {
@@ -81,7 +81,7 @@ public class ChestShopSign {
         if (player == null) return false;
         if (sign == null) return true;
 
-        return uName.canUseName(player, sign.getLine(0));
+        return NameManager.canUseName(player, sign.getLine(NAME_LINE));
     }
 
     public static boolean isValidPreparedSign(String[] lines) {
